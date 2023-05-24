@@ -3,6 +3,7 @@
     <h3 class="text-3xl font-bold">Task Management</h3>
 
     <label class="swap swap-rotate">
+      <!--data-toggle-theme="dark"-->
       <input type="checkbox" />
 
       <svg
@@ -29,7 +30,15 @@
 </template>
 
 <script>
+import { onMounted } from "vue";
+import { themeChange } from "theme-change";
 export default {
   name: "Navbar",
+
+  setup() {
+    onMounted(() => {
+      themeChange(false);
+    });
+  },
 };
 </script>
