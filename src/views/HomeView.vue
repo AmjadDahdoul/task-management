@@ -1,7 +1,9 @@
-<template>
-  <div class="container mx-auto">
+<template >
+  <div class="md:container md:mx-auto mx-10">
     <Navbar />
-    <div class="md:flex md:justify-between md:space-x-5 py-10">
+    <div
+      class="md:flex md:justify-between md:space-x-5 md:space-y-0 space-y-7 py-10"
+    >
       <AddTask @newTask="handleNewTask" />
       <InfoBox
         :totalTasks="this.tasks.length"
@@ -54,7 +56,7 @@ export default {
     },
     handleEditedTask(updatedTask) {
       this.tasks = this.tasks.map((task) =>
-        task === updatedTask ? console.log(111) : task
+        task.id === updatedTask.id ? { ...task, ...updatedTask } : task
       );
     },
     handleRemove(id) {
