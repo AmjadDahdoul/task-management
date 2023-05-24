@@ -1,7 +1,7 @@
 <template>
   <form
     @submit.prevent="handleSubmit"
-    class="space-y-7 flex-grow rounded-2xl shadow-2xl p-5"
+    class="space-y-7 flex-grow rounded-2xl shadow-2xl p-5 font-bold"
   >
     <div class="form-control w-full max-w-xs">
       <label class="label">
@@ -29,7 +29,9 @@
         required
       ></textarea>
     </div>
-    <button class="btn btn-info">Add Task</button>
+    <div class="text-center md:text-start">
+      <button class="btn btn-info btn-wide">Add Task</button>
+    </div>
   </form>
 </template>
 

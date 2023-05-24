@@ -8,6 +8,7 @@
     <button
       class="btn btn-info my-4 btn-wide font-bold"
       @click="handleCompleted"
+      :disabled="!completedTasks"
     >
       {{ hideCompleted ? "Show all" : "Hide completed" }}
     </button>
