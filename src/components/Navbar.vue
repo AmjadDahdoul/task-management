@@ -1,6 +1,6 @@
 <template>
   <nav class="my-4 text-center">
-    <h3 class="text-3xl font-bold">Task Management</h3>
+    <h3 class="text-3xl font-bold">Tasks Management</h3>
   </nav>
 </template>
 
