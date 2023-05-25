@@ -9,11 +9,11 @@
       :checked="task.completed"
       title="Mark as complete"
       class="checkbox checkbox-info"
-      @click="$emit('completeTask', task.id)"
+      @input="$emit('completeTask', task.id)"
     />
     <div class="flex-grow">
       <h3
-        class="text-2xl cursor-pointer font-bold"
+        class="text-2xl cursor-pointer font-bold capitalize"
         v-text="task.title"
         @click="showTaskDetails = !showTaskDetails"
       ></h3>
@@ -57,7 +57,6 @@
         <input
           class="text-2xl w-1/2 border-2 border-black"
           v-model.trim="task.title"
-          v-text="task.title"
           maxlength="50"
           required
         />
@@ -66,14 +65,24 @@
         <textarea
           class="break-all textarea textarea-bordered h-24 w-full resize-none border-2 border-black"
           v-model.trim="task.details"
-          v-text="task.details"
           maxlength="250"
           required
         ></textarea>
         <div class="divider"></div>
-        <div class="text-center">
-          <button class="btn btn-info btn-wide">
-            {{ beforeEdit ? "Cancel" : "Save" }}
+        <div
+          class="flex flex-col md:flex md:flex-row gap-3 justify-center items-center"
+        >
+          <button
+            class="btn btn-info btn-wide"
+            v-show="
+              cachedTask.title !== task.title ||
+              cachedTask.details !== task.details
+            "
+          >
+            Save
+          </button>
+          <button class="btn btn-info btn-wide" @click.prevent="cancelEdit">
+            Cancel
           </button>
         </div>
       </div>
@@ -82,6 +91,7 @@
 </template>
 
 <script>
+import { thisTypeAnnotation } from "@babel/types";
 import { Icon } from "@iconify/vue";
 export default {
   name: "SingleTask",
@@ -89,7 +99,7 @@ export default {
     return {
       showTaskDetails: true,
       isBeingEdited: false,
-      saveEdited: null,
+      isUnchanged: null,
       cachedTask: {
         title: this.task.title,
         details: this.task.details,
@@ -104,7 +114,7 @@ export default {
   },
   methods: {
     handleEdit() {
-      if (this.saveEdited) {
+      if (this.isUnchanged) {
         this.isBeingEdited = false;
         return;
       }
@@ -119,14 +129,19 @@ export default {
       this.cachedTask.title = this.task.title;
       this.cachedTask.details = this.task.details;
     },
+    cancelEdit() {
+      const { title, details } = this.cachedTask;
+      Object.assign(this.task, { title, details });
+      this.isBeingEdited = false;
+    },
   },
   computed: {
     beforeEdit() {
       let checkBeforeEdit =
         this.cachedTask.title === this.task.title &&
         this.cachedTask.details === this.task.details;
-      this.saveEdited = checkBeforeEdit;
-      return this.saveEdited;
+      this.isUnchanged = checkBeforeEdit;
+      return this.isUnchanged;
     },
   },
 };
