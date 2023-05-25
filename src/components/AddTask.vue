@@ -24,7 +24,7 @@
       <textarea
         class="textarea textarea-bordered h-24 resize-none"
         v-model.trim="details"
-        placeholder="e.g. Create a new app using Vuejs and tailwindcss"
+        placeholder="e.g. Create a new app using Vuejs and Tailwindcss"
         maxlength="250"
         required
       ></textarea>
