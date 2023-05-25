@@ -5,15 +5,7 @@
 </template>
 
 <script>
-import { onMounted } from "vue";
-import { themeChange } from "theme-change";
 export default {
   name: "Navbar",
-
-  setup() {
-    onMounted(() => {
-      themeChange(false);
-    });
-  },
 };
 </script>

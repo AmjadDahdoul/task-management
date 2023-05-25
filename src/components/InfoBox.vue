@@ -4,7 +4,7 @@
   >
     <h3>Total Tasks: {{ totalTasks }}</h3>
     <div class="divider"></div>
-    <h3>Completed Tasks {{ completedTasks }}</h3>
+    <h3>Completed Tasks: {{ completedTasks }}</h3>
     <button
       class="btn btn-info my-4 btn-wide font-bold"
       @click="handleCompleted"
