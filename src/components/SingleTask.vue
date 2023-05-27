@@ -13,7 +13,7 @@
     />
     <div class="flex-grow">
       <h3
-        class="text-2xl cursor-pointer font-bold capitalize"
+        class="text-2xl cursor-pointer font-bold capitalize break-all"
         v-text="task.title"
         @click="showTaskDetails = !showTaskDetails"
       ></h3>
@@ -55,7 +55,7 @@
       />
       <div class="flex-grow">
         <input
-          class="text-2xl w-1/2 border-2 border-black"
+          class="text-2xl w-full border-2 border-black"
           v-model.trim="task.title"
           maxlength="50"
           required
@@ -73,7 +73,7 @@
           class="flex flex-col md:flex md:flex-row gap-3 justify-center items-center"
         >
           <button
-            class="btn btn-info btn-wide"
+            class="btn btn-info w-1/3"
             v-show="
               cachedTask.title !== task.title ||
               cachedTask.details !== task.details
@@ -81,7 +81,7 @@
           >
             Save
           </button>
-          <button class="btn btn-info btn-wide" @click.prevent="cancelEdit">
+          <button class="btn btn-info w-1/3" @click.prevent="cancelEdit">
             Cancel
           </button>
         </div>
@@ -91,7 +91,6 @@
 </template>
 
 <script>
-import { thisTypeAnnotation } from "@babel/types";
 import { Icon } from "@iconify/vue";
 export default {
   name: "SingleTask",

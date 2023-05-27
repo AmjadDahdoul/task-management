@@ -1,5 +1,5 @@
 <template >
-  <div class="md:container md:mx-auto mx-10">
+  <div class="md:container md:mx-auto mx-4">
     <Navbar />
     <div
       class="md:flex md:justify-between md:space-x-5 md:space-y-0 space-y-7 py-10"
